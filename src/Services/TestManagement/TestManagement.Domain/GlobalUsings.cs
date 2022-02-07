@@ -6,4 +6,5 @@ global using System.Linq;
 global using System.Reflection;
 global using System;
 global using System.Linq.Expressions;
+global using TestManagement.Domain.ValueObjects;
 
