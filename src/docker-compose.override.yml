@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  thynkdb:
+    container_name: thynkdb
+    environment:
+      - SA_PASSWORD="Thynk1234"
+      - ACCEPT_EULA="Y"
+    restart: always
+    ports:
+      - "5433:1433"
+
+  testmanagement.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - PORT=80
+    ports:
+      - "8000:80"
+    depends_on:
+      - thynkdb
+volumes:
+  thynk-sqldata:
+    external: false
+networks:
+  thynk-network:
+    name: thynk-network
+    
