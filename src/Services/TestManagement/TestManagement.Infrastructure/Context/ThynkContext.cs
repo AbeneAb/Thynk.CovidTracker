@@ -17,6 +17,11 @@
         public DbSet<SpecimenTypes> SpecimenTypes { get; set; }
         public DbSet<UserRoles> UserRoles { get; set; }
         private readonly IMediator _mediator;
+        private IDbContextTransaction _transaction;
+        public ThynkContext(DbContextOptions<ThynkContext> options):base(options)
+        {
+
+        }
         public ThynkContext(DbContextOptions<ThynkContext> contextOptions, IMediator mediator) : base(contextOptions)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
