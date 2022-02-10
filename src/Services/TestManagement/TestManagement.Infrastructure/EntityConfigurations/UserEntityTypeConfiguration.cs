@@ -14,9 +14,11 @@
                 UsePropertyAccessMode(PropertyAccessMode.Field).HasColumnName("GenderId").IsRequired();  
             builder.Property<int>("_roleId").
                 UsePropertyAccessMode(PropertyAccessMode.Field).HasColumnName("RoleId").IsRequired();
-            builder.HasMany(b=>b.Bookings).WithOne(b => b.User).HasForeignKey(b => b.Id);
+            builder.HasMany(b=>b.Bookings).WithOne(b => b.User).HasForeignKey(b => b.UserId);
 
             builder.HasMany(b => b.TestCenterLogs).WithOne(b => b.User).HasForeignKey(t => t.UserId);
+            builder.HasOne(u => u.Gender).WithMany().HasForeignKey("_genderId");
+            builder.HasOne(u => u.UserRole).WithMany().HasForeignKey("_roleId");
         }
     }
 }

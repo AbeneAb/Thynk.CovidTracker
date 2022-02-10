@@ -1,5 +1,4 @@
-﻿
-namespace TestManagement.API.Extensions
+﻿namespace TestManagement.API.Extensions
 {
     public static class HostExtensions
     {

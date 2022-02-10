@@ -15,7 +15,7 @@
                 IsRequired(true);
             builder.HasOne(b => b.BookingStatus).WithMany().HasForeignKey("_bookingStatus");
             builder.HasOne(b=>b.User).
-                WithMany(b=>b.Bookings).HasForeignKey(b=>b.UserId).IsRequired().OnDelete(DeleteBehavior.Restrict);
+                WithMany(b=>b.Bookings).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

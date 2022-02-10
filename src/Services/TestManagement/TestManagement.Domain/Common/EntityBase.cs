@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestManagement.Domain.Common
+﻿namespace TestManagement.Domain.Common
 {
     public abstract class EntityBase
     {
@@ -17,6 +11,7 @@ namespace TestManagement.Domain.Common
         {
             Id = Guid.NewGuid();
             CreatedDate= DateTime.Now;
+            CreatedBy = Guid.Empty;
         }
     }
 }

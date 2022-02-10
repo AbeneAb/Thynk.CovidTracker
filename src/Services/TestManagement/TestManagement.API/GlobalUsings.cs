@@ -19,9 +19,18 @@ global using Microsoft.Data.SqlClient;
 global using Microsoft.AspNetCore;
 global using TestManagement.API;
 global using TestManagement.API.Extensions;
+global using TestManagement.API.Filter;
 global using TestManagement.Domain.Common;
 global using TestManagement.Infrastructure.Context;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.Filters;
-
-
+global using MediatR;
+global using TestManagement.Application.Commands.TestCenter;
+global using TestManagement.Application;
+global using TestManagement.Application.Queries.TestCenter;
+global using TestManagement.Application.Commands.Booking;
+global using TestManagement.Application.Queries.Booking;
+global using TestManagement.Application.Commands;
+global using TestManagement.Application.Commands.SpecimenInformation;
+global using TestManagement.Application.Commands.Result;
+global using System.Text.Json.Serialization;

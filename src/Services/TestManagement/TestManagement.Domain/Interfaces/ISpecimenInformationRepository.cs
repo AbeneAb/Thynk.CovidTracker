@@ -2,5 +2,6 @@
 {
     public interface ISpecimenInformationRepository : IAsyncRepository<SpecimenInformation>
     {
+        Task<IEnumerable<SpecimenInformation>> GetAllSpecimensInprogressAsync();
     }
 }

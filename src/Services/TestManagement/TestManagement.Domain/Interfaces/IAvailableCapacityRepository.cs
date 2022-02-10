@@ -2,5 +2,6 @@
 {
     public interface IAvailableCapacityRepository : IAsyncRepository<TestCenterAvailableCapacity>
     {
+        Task UpdateAvailablity(Guid testCenterId,int value);
     }
 }

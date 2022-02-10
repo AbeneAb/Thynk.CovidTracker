@@ -25,6 +25,7 @@ namespace TestManagement.Infrastructure.Migrations
             modelBuilder.Entity("TestManagement.Domain.Entities.Booking", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("BookDate")
@@ -59,6 +60,8 @@ namespace TestManagement.Infrastructure.Migrations
                         .IsUnique();
 
                     b.HasIndex("TestCenterId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("_bookingStatus");
 
@@ -309,10 +312,6 @@ namespace TestManagement.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("GenderId")
-                        .HasColumnType("int")
-                        .HasColumnName("GenderId1");
-
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -326,9 +325,6 @@ namespace TestManagement.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("UserRoleId")
-                        .HasColumnType("int");
 
                     b.Property<int>("_genderId")
                         .HasColumnType("int")
@@ -349,8 +345,6 @@ namespace TestManagement.Infrastructure.Migrations
 
                     SqlServerIndexBuilderExtensions.IsClustered(b.HasIndex("FirstName"), false);
 
-                    b.HasIndex("GenderId");
-
                     b.HasIndex("Id")
                         .IsUnique();
 
@@ -358,7 +352,9 @@ namespace TestManagement.Infrastructure.Migrations
 
                     SqlServerIndexBuilderExtensions.IsClustered(b.HasIndex("LastName"), false);
 
-                    b.HasIndex("UserRoleId");
+                    b.HasIndex("_genderId");
+
+                    b.HasIndex("_roleId");
 
                     b.ToTable("User", "covid");
                 });
@@ -445,16 +441,16 @@ namespace TestManagement.Infrastructure.Migrations
 
             modelBuilder.Entity("TestManagement.Domain.Entities.Booking", b =>
                 {
-                    b.HasOne("TestManagement.Domain.Entities.User", "User")
-                        .WithMany("Bookings")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("TestManagement.Domain.Entities.TestCenter", "TestCenter")
                         .WithMany("Bookings")
                         .HasForeignKey("TestCenterId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TestManagement.Domain.Entities.User", "User")
+                        .WithMany("Bookings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("TestManagement.Domain.Enumerations.BookingStatus", "BookingStatus")
@@ -585,13 +581,13 @@ namespace TestManagement.Infrastructure.Migrations
                 {
                     b.HasOne("TestManagement.Domain.Enumerations.Gender", "Gender")
                         .WithMany()
-                        .HasForeignKey("GenderId")
+                        .HasForeignKey("_genderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TestManagement.Domain.Enumerations.UserRoles", "UserRole")
                         .WithMany()
-                        .HasForeignKey("UserRoleId")
+                        .HasForeignKey("_roleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

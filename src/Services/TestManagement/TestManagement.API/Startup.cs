@@ -7,22 +7,34 @@
         {
             Configuration = configuration;
         }
-        public void ConfigureServices(IServiceCollection services) 
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddInfrastructureServices(Configuration);
+            services.AddApplicationServices();
             services.AddControllers();
-            services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { 
-                    Title = "Test Management API", Version = "v1" });
+            services.AddControllers(option =>
+            {
+                option.Filters.Add(typeof(HttpGlobalExceptionFilter));
+            })
+                .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
+            .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Test Management API",
+                    Version = "v1"
+                });
             });
         }
         public void Configure(IApplicationBuilder app,IWebHostEnvironment env) 
         {
             if (env.IsDevelopment())
+
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ordering.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Test Management API v1"));
             }
 
             app.UseRouting();

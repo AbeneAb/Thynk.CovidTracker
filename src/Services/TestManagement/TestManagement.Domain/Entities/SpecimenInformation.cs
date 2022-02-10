@@ -5,7 +5,7 @@
         public Guid BookingId { get; private set; }
         public DateTime CollectionDate { get; private set; }
         private int _specimenTypeId;
-        public SpecimenTypes SpecimenTypes { get; private set; } = SpecimenTypes.Nasopharyngeal;
+        public SpecimenTypes SpecimenTypes { get; private set; }
         public Booking Booking { get; private set; }
         public SpecimenInformation()
         {

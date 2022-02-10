@@ -1,4 +1,5 @@
-﻿
+﻿using TestManagement.Application.Exceptions;
+
 namespace TestManagement.API.Filter
 {
     public class HttpGlobalExceptionFilter : IExceptionFilter
@@ -22,9 +23,23 @@ namespace TestManagement.API.Filter
                     Status = StatusCodes.Status400BadRequest,
                     Detail = "Please refer to error property"
                 };
-                problem.Errors.Add("DoaminValidations", new string[] { context.Exception.Message });
+                problem.Errors.Add("DomainValidations", new string[] { context.Exception.Message });
                 context.Result = new BadRequestObjectResult(problem);
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            }
+            else if (context.Exception.GetType() == typeof(ValidationException))
+            {
+                var problem = new ValidationProblemDetails()
+                {
+                    Instance = context.HttpContext.Request.Path,
+                    Status = StatusCodes.Status400BadRequest,
+                    Detail = "Please refer to error property"
+                };
+                ValidationException? ex = context.Exception as ValidationException;
+                foreach (var error in ex?.Errors) { problem.Errors.Add(error); }
+                context.Result = new BadRequestObjectResult(problem);
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+
             }
             else
             {

@@ -2,5 +2,6 @@
 {
     public interface IResultRepository : IAsyncRepository<Result>
     {
+        Task<IEnumerable<Result>> GetResultsAsync();
     }
 }

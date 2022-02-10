@@ -25,5 +25,10 @@
             AvailableUntil = availableUntil;
             IsAvailable = isAvailable;
         }
+        public void AddTestCenterAvailableSpace(uint availableSpace) 
+        {
+            var availableSpaceItem = new TestCenterAvailableCapacity(Id, availableSpace);
+            TestCenterAvailableCapacity = availableSpaceItem;
+        }
     }
 }
