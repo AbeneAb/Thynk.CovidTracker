@@ -7,7 +7,7 @@ This project is organized in such a way that there is loose coupling between lay
 
 **A little about the Domain Entities Design**
 
-*We have **TestCenter** where we define differnt test centers along with address as owned entity. So I have assumed that *TestCenter* Entity is an aggregate root. Under Test center we have different **Bookings** along with the user Name,Age,gender has it own **SpecimenInformation** where there are going to be  **Results** participating in an **Events.** So for each event we are going to have **Markets** and **Participant Detail**. Each Market will have offers called **Selection**, where we are going to have our Odds. To elaborate furthur Let's take **Euro** 2020 as an example. A game between **Spain and Denmark** is an event.We will have **Markets** like <ins>Match Winner, Goals Under 2.5</ins> and so on. The values for markets will be contained by our **selection** which may be <ins>Spain</ins> <ins>Draw</ins> or <ins>Denmark</ins> for our <ins>Match winner</ins> market. The selection will hold the odds along with index and other fields like label. So we have API controllers defined for various business points. But the main scope of the project, as I understand it is around **Selection Entity**.*
+*We have **TestCenter** where we define differnt test centers along with address as owned entity. So I have assumed that *TestCenter* Entity is an aggregate root. Under Test center we have different **Bookings** along with the user Name,Age,gender has it own **SpecimenInformation** where there are going to be  **Results** participating in an **Events.** So for each event we are going to have **Booking**, **Specimen Information** and **TestResult**.  To elaborate furthur first we will create the **Test Centers** then we will have to make a booking to that test center hernce, we will add **Booking**, each booking has an enum status**BookingStatus** like reserved, canceled & completed. After a user make a reservation, they will provide a specimen, hence **SpecimenInformation** the specimen will have **SpecimenTypes** enum like Nasal,AnteriorNares & Nasopharyngeal. When we add a specimen we will also add a **Result** with result status pending.
 
 ---
 
@@ -46,7 +46,7 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 ## Improvements that I would have done had I had more time
 * Time didn't allow me to work on event driven architecture, when ever there is a change in booking, we will have a pub/syb model to be notified of the process.
 * Background chron job to deallocate expired booking.
-* Non-relatiional DB[mongo] for booking, so that it can handle large set of data. We will have to use a microservice architecture.
+* Non-relational DB[mongo] for booking, so that it can handle large set of data. We will have to use a microservice architecture.
 * Add distributed cache[Redis] to decrease db overhead and improve response times.
 * Work on Idempotency for some Commands
 
