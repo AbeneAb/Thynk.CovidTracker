@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  thynkdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  testmanagement.api:
+    image: ${DOCKER_REGISTRY-}testmanagementapi
+    build:
+      context: .
+      dockerfile: Services/TestManagement/TestManagement.API/Dockerfile
