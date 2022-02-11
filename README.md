@@ -39,7 +39,13 @@ Follow these steps to get your development environment set up: (Before Running S
 . At the root directory which include **docker-compose.yml** files, run below command:
 ```
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+To run the front end change directory to test-managment-spa
 ```
+npm install
+npm start
+```
+React application should be running on port 3000. It will need the back end to run on port 7258.
 
 
 
@@ -50,7 +56,7 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 * Add distributed cache[Redis] to decrease db overhead and improve response times.
 * Work on Idempotency for some Commands
 
-
+If there is any comment or unclrear issue I am very happy to listen to it.
 Thank you.
 
 
