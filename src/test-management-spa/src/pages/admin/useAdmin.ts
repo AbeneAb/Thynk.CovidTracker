@@ -8,6 +8,7 @@ import {
 	UseFormWatch,
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { apiClient } from '../../util/axios';
 
 export interface AdminForm {
 	name?: string;
@@ -31,7 +32,7 @@ const schema = yup.object().shape({
 	state: yup.string().required(),
 	street: yup.string().required(),
 	zipCode: yup.string().required(),
-	availableSpace: yup.number().required().min(0).max(yup.ref('Capacity')),
+	availableSpace: yup.number().required().min(0).max(yup.ref('capacity')),
 });
 export interface TestCenterFormReturnType {
 	classNames: (...classes: string[]) => string;
@@ -54,9 +55,17 @@ export const useAdminForm = (): TestCenterFormReturnType => {
 		formState: { errors, isSubmitting },
 	} = useForm<AdminForm>({ resolver: yupResolver(schema) });
 
-	const onValidSubmitHandler = (data: AdminForm) => {
+	const onValidSubmitHandler = async (data: AdminForm) => {
 		console.log(data);
-		const params = new URLSearchParams();
+		const resp = await apiClient
+			.post<string>('/v1/TestCenter/create', data)
+			.catch((error: any) => {
+				console.log(error);
+			});
+
+		if (resp && resp?.data) {
+			console.log(resp.data);
+		}
 	};
 	const onInvalidSubmitHandler = (err: DeepMap<AdminForm, FieldError>) => {
 		console.log(err);
