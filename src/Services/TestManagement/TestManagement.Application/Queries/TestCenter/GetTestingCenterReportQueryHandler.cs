@@ -1,16 +1,16 @@
 ﻿namespace TestManagement.Application.Queries.TestCenter
 {
-    public class GetTestingCenterReportQueryHandler : IRequestHandler<GetTestingCenterReportQuery, IEnumerable<TestBookingReport>>
+    public class GetTestingCenterReportQueryHandler : IRequestHandler<GetTestingCenterReportQuery, IEnumerable<TestCenterBookingReport>>
     {
         private ITestCenterRepository _testCenterRepository;
         public GetTestingCenterReportQueryHandler(ITestCenterRepository testCenterRepository)
         {
             _testCenterRepository = testCenterRepository;
         }
-        public async Task<IEnumerable<TestBookingReport>> Handle(GetTestingCenterReportQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TestCenterBookingReport>> Handle(GetTestingCenterReportQuery request, CancellationToken cancellationToken)
         {
             var data = _testCenterRepository.GetTestCenterReport();
-            return null;
+            return await data;
         }
     }
 }

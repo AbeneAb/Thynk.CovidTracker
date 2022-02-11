@@ -13,4 +13,6 @@ global using Microsoft.Extensions.DependencyInjection;
 global using System.Reflection;
 global using TestManagement.Application.Behaviours;
 global using System.Runtime.Serialization;
+global using TestManagement.Domain.QueryModel;
+
 

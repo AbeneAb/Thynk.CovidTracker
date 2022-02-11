@@ -19,7 +19,9 @@
 
         public async Task<IEnumerable<Booking>> GetBookingWithSpecimen()
         {
-            var data = _context.Bookings.Include(B => B.SpecimenInformation).Include(b=>b.User).AsNoTracking().ToListAsync();
+            var data = _context.Bookings
+                .Include(B => B.SpecimenInformation)
+                .Include(b=>b.User).Include(b=>b.Result).Where(b=>b.Result != null).AsNoTracking().ToListAsync();
             return await data;
         }
     }

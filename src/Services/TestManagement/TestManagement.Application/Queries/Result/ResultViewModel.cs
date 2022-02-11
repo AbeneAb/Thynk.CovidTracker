@@ -6,5 +6,7 @@ public record ResultVM
     public string FirstName { get; init; }
     public string LastName { get; init; }    
     public string Result { get; init; }
+    public string TestCenter { get; init; }
+
     
 }

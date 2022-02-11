@@ -23,7 +23,9 @@ export const useAvailableTestCenter = (
 	const [data, setData] = useState<ITestCenters[] | null>(null);
 	const fetchTestCenters = async () => {
 		setLoading(true);
-		const resp = await apiClient.get(url).catch((reason: any) => {
+		const resp = await apiClient.get(url,{
+            cancelToken: cancelSource?.current?.token,
+        }).catch((reason: any) => {
 			console.log(reason);
 			setData(null);
 			setLoading(false);

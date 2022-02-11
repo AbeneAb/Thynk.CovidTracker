@@ -1,4 +1,6 @@
-﻿namespace TestManagement.Infrastructure
+﻿using TestManagement.Domain.QueryModel;
+
+namespace TestManagement.Infrastructure
 {
     public class ThynkContext : DbContext
     {
@@ -16,7 +18,8 @@
         public DbSet<ResultStatus> ResultsStatus { get; set; }
         public DbSet<SpecimenTypes> SpecimenTypes { get; set; }
         public DbSet<UserRoles> UserRoles { get; set; }
-        private readonly IMediator _mediator;
+        public DbSet<TestCenterBookingReport> TestCenterBookingReports { get; set; }
+        private readonly IMediator _mediator; 
         private IDbContextTransaction _transaction;
         public ThynkContext(DbContextOptions<ThynkContext> options):base(options)
         {

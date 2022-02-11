@@ -243,7 +243,7 @@ const AdminDashboard: React.FunctionComponent = () => {
 							<div className="border-t border-gray-200" />{' '}
 						</div>
 					</div>
-					{/* Section-2 Pickup and Delivery */}
+					{/* Section-2 Test Center List and Delivery */}
 					<div>
 						<Table columns={columns} dataSource={data!}/>
 					</div>
