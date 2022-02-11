@@ -25,7 +25,10 @@ The project is orgainized with microservice architecture in mind, hence I have
 * Containerization of databases
 * Override Environment variables
 #### Test Client Webapp
-* Implemented SPA with create react app that uses functional components
+* Implemented SPA with create react app that uses functional components and typescript.
+* Responsive UI with tailwind was used.
+* Project was structured with Single Responsibility Principle in mind.
+* Has fluent validation with yup.
 
 ## Running The Project
 We will need the following tools:
@@ -55,6 +58,7 @@ React application should be running on port 3000. It will need the back end to r
 * Non-relational DB[mongo] for booking, so that it can handle large set of data. We will have to use a microservice architecture.
 * Add distributed cache[Redis] to decrease db overhead and improve response times.
 * Work on Idempotency for some Commands
+* Front en
 
 If there is any comment or unclrear issue I am very happy to listen to it.
 Thank you.
