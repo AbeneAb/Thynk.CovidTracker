@@ -8,7 +8,7 @@
             _specimenInformationRepository = specimenInformationRepository;
             RuleFor(c=>c.BookingId).NotEmpty().NotNull();
             RuleFor(c=>c.ResultIssuedDate).NotEmpty().NotNull().GreaterThan(DateTime.UtcNow);
-            RuleFor(c=>c.SpecimenId).MustAsync(async (entity, value, c) => await NoSpecimenForGivenBooking(entity))
+            RuleFor(c=>c.BookingId).MustAsync(async (entity, value, c) => await NoSpecimenForGivenBooking(entity))
                 .WithMessage("There should be one specimen for result");
         }
         private async Task<bool> NoSpecimenForGivenBooking(CreateResultCommand bookingGuid)
