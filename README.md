@@ -60,7 +60,7 @@ React application should be running on port 3000. It will need the back end to r
 * Non-relational DB[mongo] for booking, so that it can handle large set of data. We will have to use a microservice architecture.
 * Add distributed cache[Redis] to decrease db overhead and improve response times.
 * Work on Idempotency for some Commands.
-* Front en
+* Role based front end UI.
 
 If there is any comment or unclrear issue I am very happy to listen to it.
 Thank you.
