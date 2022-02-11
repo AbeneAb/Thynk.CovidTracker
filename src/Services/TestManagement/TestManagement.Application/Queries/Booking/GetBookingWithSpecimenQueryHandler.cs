@@ -1,6 +1,6 @@
 ﻿namespace TestManagement.Application.Queries.Booking
 {
-    public class GetBookingWithSpecimenQueryHandler : IRequestHandler<GetBookingWithSpecimenQuery,IEnumerable<BookingVM>
+    public class GetBookingWithSpecimenQueryHandler : IRequestHandler<GetBookingWithSpecimenQuery,IEnumerable<BookingVM>>
     {
         private readonly IBookingRepository _bookingRepository;
         public GetBookingWithSpecimenQueryHandler(IBookingRepository bookingRepository)
