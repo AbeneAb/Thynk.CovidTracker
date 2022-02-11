@@ -25,5 +25,10 @@
                .AsNoTracking().ToListAsync();
             return await data;
         }
+
+        public Task<IEnumerable<TestCenter>> GetTestCenterReport()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

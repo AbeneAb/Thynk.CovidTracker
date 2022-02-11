@@ -44,7 +44,15 @@ namespace TestManagement.API.Controllers
             var bookings = await _mediator.Send(getAllQuery);
             return Ok(bookings);
         }
-
+        [Route("getbookingwithspecimen")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<BookingVM>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<BookingVM>>> GetBookingsWithSpecimen() 
+        {
+            var getBookingWithSpecimen = new GetBookingWithSpecimenQuery();
+            var bookings = await _mediator.Send(getBookingWithSpecimen);
+            return Ok(bookings);
+        }
 
     }
 }

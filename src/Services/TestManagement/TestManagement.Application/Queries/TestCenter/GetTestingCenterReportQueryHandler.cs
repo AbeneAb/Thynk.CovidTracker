@@ -10,6 +10,7 @@
         public async Task<IEnumerable<TestBookingReport>> Handle(GetTestingCenterReportQuery request, CancellationToken cancellationToken)
         {
             var data = _testCenterRepository.GetTestCenterReport();
+            return null;
         }
     }
 }

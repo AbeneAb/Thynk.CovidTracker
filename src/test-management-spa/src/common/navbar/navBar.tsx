@@ -2,7 +2,6 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import {
 	ChatIcon,
 	FolderOpenIcon,
-	HeartIcon,
 	LogoutIcon,
 	MailIcon,
 	MenuIcon,
@@ -10,14 +9,17 @@ import {
 	TruckIcon,
 	UsersIcon,
 	XIcon,
+	BookOpenIcon,
+	ViewBoardsIcon
 } from '@heroicons/react/outline';
 import React, { Fragment } from 'react';
 
 const navigation = [
-	{ name: 'Admin', href: '#', current: true, icon: SearchIcon },
-	{ name: 'Specimen', href: '#', current: false, icon: HeartIcon },
-	{ name: 'Results', href: '#', current: false, icon: TruckIcon },
-	{ name: 'Report', href: '#', current: false, icon: FolderOpenIcon },
+	{ name: 'Admin', href: '/', current: true, icon: SearchIcon },
+	{ name: 'Booking', href: '/booking', current: false, icon: BookOpenIcon },
+	{ name: 'Specimen', href: '/specimen', current: false, icon: ViewBoardsIcon },
+	{ name: 'Results', href: '/result', current: false, icon: TruckIcon },
+	{ name: 'Report', href: '/report', current: false, icon: FolderOpenIcon },
 	{ name: 'Help Center', href: '#', current: false, icon: ChatIcon },
 ];
 

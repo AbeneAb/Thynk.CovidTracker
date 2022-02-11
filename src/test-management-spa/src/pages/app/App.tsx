@@ -7,6 +7,9 @@ import {
 } from 'react-router-dom';
 import NotFoundPage from '../404';
 import DefaultLayout from '../../layout/defaultLayout';
+import AdminDashboard from '../admin';
+import Booking from '../booking'
+import Specimen from '../specimen'
 import './App.css';
 
 function App() {
@@ -14,16 +17,20 @@ function App() {
 		<Router>
 			<Switch>
 				<Route path="/" exact>
-					<Redirect to="/" />
+					<Redirect to="/admin" />
 				</Route>
-				<Route path={['/quote-search', '/quote-results','*']}>
+				<Route path={['/admin', '/booking','/specimen']}>
 					<DefaultLayout>
-						<Route path="/quote-search" component={NotFoundPage} />
-						<Route path="/quote-results" component={NotFoundPage} />
-            <Route path="*" component={NotFoundPage} />
+						<Route path="/admin" component={AdminDashboard} />
+						<Route path="/booking" component={Booking} />
+						<Route path='/specimen' component={Specimen}/>
 					</DefaultLayout>
 				</Route>
-			
+				<Route path="*">
+					<DefaultLayout>
+						<NotFoundPage />
+					</DefaultLayout>
+				</Route>
 			</Switch>
 		</Router>
 	);

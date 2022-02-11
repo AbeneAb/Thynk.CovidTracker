@@ -16,5 +16,11 @@
                 .Include(b=>b.BookingStatus).AsNoTracking().ToListAsync();
             return await data;
         }
+
+        public async Task<IEnumerable<Booking>> GetBookingWithSpecimen()
+        {
+            var data = _context.Bookings.Include(B => B.SpecimenInformation).Include(b=>b.User).AsNoTracking().ToListAsync();
+            return await data;
+        }
     }
 }

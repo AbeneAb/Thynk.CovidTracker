@@ -35,5 +35,15 @@
             return Ok(availableTestCenters);
         }
 
+        [Route("report")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<TestBookingReport>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<TestBookingReport>>> GetReport() 
+        {
+            var query = new GetTestingCenterReportQuery();
+            var report = await _mediator.Send(query);
+            return Ok(report);
+        }
+
     }
 }
