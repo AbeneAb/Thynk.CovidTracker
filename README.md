@@ -42,22 +42,24 @@ Follow these steps to get your development environment set up: (Before Running S
 . At the root directory which include **docker-compose.yml** files, run below command:
 ```
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
-
+```
 To run the front end change directory to test-managment-spa
+
 ```
 npm install
 npm start
 ```
+
 React application should be running on port 3000. It will need the back end to run on port 7258.
 
 
 
 ## Improvements that I would have done had I had more time
-* Time didn't allow me to work on event driven architecture, when ever there is a change in booking, we will have a pub/syb model to be notified of the process.
+* Time didn't allow me to work on event driven architecture, when ever there is a change in booking, we will have a pub/sub model to be notified of the process.
 * Background chron job to deallocate expired booking.
 * Non-relational DB[mongo] for booking, so that it can handle large set of data. We will have to use a microservice architecture.
 * Add distributed cache[Redis] to decrease db overhead and improve response times.
-* Work on Idempotency for some Commands
+* Work on Idempotency for some Commands.
 * Front en
 
 If there is any comment or unclrear issue I am very happy to listen to it.
