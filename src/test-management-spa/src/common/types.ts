@@ -1,3 +1,4 @@
+
 export interface ITestCenters {
 	id: string;
 	name: string;
@@ -18,4 +19,7 @@ export interface IBooking{
     firstName: string;
     lastName:string;
     bookingStatus:string;
+}
+export interface IBookingWithResult extends IBooking{
+    resultId:string;
 }

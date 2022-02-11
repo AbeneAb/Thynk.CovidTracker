@@ -10,5 +10,17 @@ public record BookingVM
     public DateTime DOB { get; init; }
     public string BookingStatus { get; init; }
 }
+public record BookingResultVM
+{
+    public Guid Id { get; set; }
+    public Guid ResultId { get; set; }
+    public string TestCenter { get; init; }
+    public DateTime BookingDate { get; init; }
+    public string FirstName { get; init; }
+    public string LastName { get; init; }
+    public DateTime DOB { get; init; }
+    public string BookingStatus { get; init; }
+}
+
 
 

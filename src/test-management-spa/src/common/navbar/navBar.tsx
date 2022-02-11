@@ -18,7 +18,7 @@ const navigation = [
 	{ name: 'Admin', href: '/', current: true, icon: SearchIcon },
 	{ name: 'Booking', href: '/booking', current: false, icon: BookOpenIcon },
 	{ name: 'Specimen', href: '/specimen', current: false, icon: ViewBoardsIcon },
-	{ name: 'Results', href: '/result', current: false, icon: TruckIcon },
+	{ name: 'Results', href: '/lab', current: false, icon: TruckIcon },
 	{ name: 'Report', href: '/report', current: false, icon: FolderOpenIcon },
 	{ name: 'Help Center', href: '#', current: false, icon: ChatIcon },
 ];
